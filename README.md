@@ -1,2 +1,2 @@
 # CS492_BiometricsWebApp
-Biometric Integration in Web Applications Concept
+Django concept design for the integration of biometric signatures in wide spread web applications using a TTP biometric database.
