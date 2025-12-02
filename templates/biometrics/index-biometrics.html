@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Index</title>
+{% endblock %}
+
+{% block content %}
+<h1>Welcome! Your biometric signature is...</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 id="bioSig" class="text-nowrap text-truncate"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-success" onclick="copyToClipboard()">Copy to Clipboard</button>
+                <div id="copy-status"></div>
+                <p>
+                    This string is based on the ISO and ANSI formats used for the extraction of data from fingerprint photographs.
+                    <br>It will also act as your specific biometric signature for the purpose of this concept run. Wherein you will...
+                </p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <h3>Create an Account</h3>
+            <div class="col">
+                <a role="button" class="btn btn-primary" href="{% url 'restaurant:register_restaurant'%}">Restaurant<i class="bi bi-fork-knife"></i></a>
+                <a role="button" class="btn btn-primary" href="{% url 'bank:register_bank'%}">Bank <i class="bi bi-cash-coin"></i></a>
+                <a role="button" class="btn btn-primary" href="{% url 'federal:register_federal'%}">State Registration <i class="bi bi-bank2"></i></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    function makeSignature(length){
+        let result = '';
+        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+        let signature_length = characters.length;
+        for (let i=0; i<length; i++){
+            result += characters.charAt(Math.floor(Math.random()*signature_length));
+        }
+        return result;
+    }
+    function randomLength(){
+        return Math.floor((Math.random()*(600 - 300 + 1)) + 300);
+    }
+    $('#bioSig').append(makeSignature(randomLength()));
+
+//=============================================================
+
+    const copyStatus = $('#copy-status');
+    copyStatus.empty();
+
+    const appendAlert = (message, type) =>{
+        const wrapper = document.createElement('div');
+
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `<div>${message}</div>`,
+            `<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`,
+            `</div>`
+        ].join('');
+
+        copyStatus.append(wrapper);
+    }
+    const copyToClipboard = async()=>{
+        try{
+            const element = document.querySelector('#bioSig');
+            await navigator.clipboard.writeText(element.textContent);
+            appendAlert('Copy Successful!', 'success');
+
+        } catch(error){
+            console.error("Failed to copy to the clipboard:", error);
+            appendAlert('Failed to Copy...', 'danger');
+        }
+    };
+</script>
+{% endblock %}

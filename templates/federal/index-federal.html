@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Federal Home</title>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="text-center">Federal Site.gov</h1>
+            <hr>
+            <h2>Thank You For Registering With The State Department of Human Intelligence</h2>
+            <p>
+                many studies and reports such as that written by Diac and another by Weschler, noted public concern
+                over the collection of biometric information by governments. These stemmed from concerns of privacy,
+                cyberattacks, and data-breaches.
+            </p>
+            <h2>This is where the 3rd party biometric database comes in!</h2>
+            <p>
+                The U.S. government has declared biometric signatures to be property of the entity responsible for
+                the conversion of physical prints to alpha-numerical data. It is for this reason that a 3rd party entity,
+                separate from the restaurants, banks, governments, etc. should be responsible for the distribution and
+                creation of biometric signatures for widespread use amongst clients.
+            </p>
+            <h2>Inspired by Kerberos and TTP services</h2>
+            <p>
+                If the database for one partnering entity leaks, attackers won't have access
+                to your original biometric. Instead, they'll have one of many hashed version of
+                the signature, specifically salted for each entity that uses it.
+            </p>
+            <p>
+                To login, users will send a request for authentication to the application they have an account with, which
+                will then be passed onto our service. From there, the user's biometric is compared to the template in our database
+                and will be given access to the application upon a match. Similar to Kerberos' TGTs for creating session keys
+                between the user and the web service.
+            </p>
+            <h2>What to do after a data-breach?</h2>
+            <ul>
+                <li>Use your email to request a new biometric signature.</li>
+                <li>Resubmit your fingerprint through the scanner.</li>
+                <li>A new salt will be given to the breached entity's database
+                    and be used to create your new hashed biometric signature.</li>
+            </ul>
+            <p>
+                The user will send their biometric signature, with our system converting that into a template to then be
+                hashed and stored. We can then send this information to a Kerberos TTP for the creation of a Ticket Granting
+                Ticket, containing the hashed biometric, session key, and expiration time.<br>
+                In essence, this is a third party service which uses the concepts of Kerberos within biometric applications.
+            </p>
+            <p>
+                Users can use their emails within partnering sites to request for a new password. With that entity
+                forwarding the request to us to create a new salted, hashed signature for the user.<br>
+                Changing the salt upon request will help in preventing attackers from making use of the leaked information
+                for account spoofing and injection attacks. Ensuring the database's continued safety after an attack along
+                with the user's biometric safety and privacy.
+            </p>
+            <a role="button" class="btn btn-primary" href="{% url 'biometrics:index-biometrics' %}">Biometrics <i class="bi bi-fingerprint"></i></a>
+            <a role="button" class="btn btn-primary" href="{% url 'restaurant:register_restaurant'%}">Restaurant<i class="bi bi-fork-knife"></i></a>
+            <a role="button" class="btn btn-primary" href="{% url 'bank:register_bank'%}">Bank <i class="bi bi-cash-coin"></i></a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+{##}
+{% endblock %}

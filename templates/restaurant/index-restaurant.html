@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Restaurant Home</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Restaurant</h1>
+    <h2>Your biometric fingerprint is now affiliated with Restaurant Co!</h2>
+    <p>
+        While using biometrics to make an account for commodities such as restaurants seems
+        unlikely, the possibility for future wide-spread implementation and usage of biometrics still stands.<br>
+        Users are likely to be concerned with the security of their biometrics in systems owned by public
+        corporations; unlike mobile devices, these biometric templates will have to be stored
+        externally for wide-spread use in applications such as those presented in this concept run.
+    </p>
+    <p>
+        It is likely for commodity-based corporations such as Amazon, McDonalds, Walmart, and many others to take
+        biometric signatures and use them for applications against the user's consent. These phenomena are attributed
+        to data-creepage; visible today with the presence of data brokers and the selling of excess data obtained from
+        customer interactions with the aforementioned entities.<br>
+        by design, biometric templates are composed of values which uniquely identify the individual. This makes them
+        ripe for the gathering of physical and mental data such as medical conditions, states of health, cultural
+        background, and much more.
+    </p>
+    <h2>It is for these reasons that a trusted third party is required for the collection and storage of biometric
+        signatures for wide-spread use.</h2>
+    <p>A trusted third party would ensure that the templates collected aren't used for further distribution or commercial gain.
+        Securing the user's privacy while still following U.S. laws and practices.
+    </p>
+
+    <a role="button" class="btn btn-success" href="{% url 'biometrics:index-biometrics' %}">biometrics <i class="bi bi-fingerprint"></i></a>
+    <a role="button" class="btn btn-primary" href="{% url 'bank:register_bank'%}">Bank <i class="bi bi-cash-coin"></i></a>
+    <a role="button" class="btn btn-primary" href="{% url 'federal:register_federal'%}">State Registration <i class="bi bi-bank2"></i></a>
+{% endblock %}
+
+{% block script %}
+{##}
+{% endblock %}

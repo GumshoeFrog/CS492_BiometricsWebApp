@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'biometrics:index-biometrics'%}">Reyes.Final</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Restaurant Co.</a>
+              <ul class="dropdown-menu">
+                  {% if request.session.restaurant_id %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'restaurant:index_restaurant'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'restaurant:logout_restaurant'%}">Log-out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'restaurant:register_restaurant'%}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'restaurant:login_restaurant'%}">Login</a>
+                    </li>
+                {% endif %}
+              </ul>
+          </li>
+{#      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx#}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Bankers Bank</a>
+              <ul class="dropdown-menu">
+                  {% if request.session.bank_id %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'bank:index_bank'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bank:logout_bank'%}">Log-out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'bank:register_bank'%}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'bank:login_bank'%}">Login</a>
+                    </li>
+                {% endif %}
+              </ul>
+          </li>
+{#      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx#}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Federal Agency</a>
+              <ul class="dropdown-menu">
+                  {% if request.session.federal_id %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'federal:index_federal'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'federal:logout_federal'%}">Log-out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'federal:register_federal'%}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'federal:login_federal'%}">Login</a>
+                    </li>
+                {% endif %}
+              </ul>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+{% block script %}
+
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+<title>Restaurant Log-in</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Log-In To Continue Earning Points!</h1>
+    <form action="{% url 'restaurant:login_restaurant' %}" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <a class="mx-3" href="{% url 'restaurant:register_restaurant' %}">Don't have an account?</a>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+{##}
+{% endblock %}
