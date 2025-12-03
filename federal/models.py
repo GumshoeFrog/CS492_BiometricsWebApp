@@ -13,4 +13,4 @@ class Federal(models.Model):
 @receiver(pre_save, sender=Federal)
 def hash_password(sender, instance, **kwargs):
     if not instance.password.startswith('pbkdf2_'):
-        instance.password = make_password(instance.password)
+        instance.password = make_password(instance.password, salt='FederalID')
