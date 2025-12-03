@@ -20,5 +20,5 @@ def hash_password(sender, instance, **kwargs):
     # if the password field item does not start with 'pbkdf2_'...
     if not instance.password.startswith('pbkdf2_'):
         # use django's make_password to hash the item in the given password field using PBKDF2 (a slow hash function).
-        instance.password = make_password(instance.password)
+        instance.password = make_password(instance.password, salt='RestaurantID')
 
